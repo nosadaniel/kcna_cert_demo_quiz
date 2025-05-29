@@ -367,6 +367,7 @@
             <div class="result-details" id="resultDetails">
                 <!-- Results will be populated by JavaScript -->
             </div>
+            <button id="retakeExamBtn" style="margin-top:30px;background:linear-gradient(45deg,#4facfe,#00f2fe);color:white;border:none;padding:15px 40px;font-size:1.1em;font-weight:bold;border-radius:25px;cursor:pointer;transition:all 0.3s ease;box-shadow:0 4px 15px rgba(79,172,254,0.18);">Retake Exam</button>
         </div>
     </div>
 
@@ -393,6 +394,7 @@
         // Use window.EXAM_CONFIG and window.examQuestions from the config and questions files
         const examQuestions = window.examQuestions;
         const EXAM_CONFIG = window.EXAM_CONFIG;
+        const ORIGINAL_TOTAL_QUESTIONS = EXAM_CONFIG.totalQuestions;
 
         let timeRemaining = EXAM_CONFIG.examDurationMinutes * 60; // Convert minutes to seconds
         let timerInterval;
@@ -400,6 +402,17 @@
         let selectedExamQuestions = [];
 
         function initializeExam() {
+            EXAM_CONFIG.totalQuestions = ORIGINAL_TOTAL_QUESTIONS;
+            // Reset form and UI
+            document.getElementById('examForm').reset();
+            document.getElementById('examForm').style.display = '';
+            document.getElementById('results').style.display = 'none';
+            document.getElementById('scoreCircle').className = 'score-circle';
+            document.getElementById('resultDetails').innerHTML = '';
+            document.getElementById('resultTitle').textContent = '';
+            // Clear previous questions
+            document.getElementById('questions').innerHTML = '';
+
             selectedExamQuestions = getRandomizedExamQuestions();
             // Override totalQuestions and examDurationMinutes based on actual selected questions
             EXAM_CONFIG.totalQuestions = selectedExamQuestions.length;
@@ -510,6 +523,17 @@
                 document.getElementById('timer').style.display = '';
                 document.getElementById('progressBar').style.display = '';
                 updateExamInfo(EXAM_CONFIG);
+                initializeExam();
+            };
+            // Retake Exam button logic
+            document.getElementById('retakeExamBtn').onclick = function() {
+                // Hide results, reset state, and immediately start a new exam
+                // Do not show the welcome page on retake; go straight to the exam
+                document.getElementById('welcomePage').style.display = 'none';
+                document.getElementById('results').style.display = 'none';
+                document.querySelector('.exam-container').style.display = '';
+                document.getElementById('timer').style.display = '';
+                document.getElementById('progressBar').style.display = '';
                 initializeExam();
             };
         });
