@@ -9,7 +9,7 @@ function calculateDomainStats(answeredQuestions, selectedExamQuestions) {
         stats[question.domain].total++;
         
         const answer = answeredQuestions.find(a => a.questionId === question.id);
-        if (answer && answer.selectedAnswer === (question.correct - 1)) {
+        if (answer && answer.selectedAnswer === question.correct) {
             stats[question.domain].correct++;
         }
     });
@@ -37,7 +37,7 @@ function getAnsweredQuestions(selectedExamQuestions) {
 function submitExam(selectedExamQuestions, examConfig, timeRemaining) {
     clearInterval(timerInterval);
     const answeredQuestions = getAnsweredQuestions(selectedExamQuestions);
-    const correctAnswers = answeredQuestions.filter(q => q.selectedAnswer === (q.correct - 1)).length;
+    const correctAnswers = answeredQuestions.filter(q => q.selectedAnswer === q.correct).length;
     const totalQuestions = selectedExamQuestions.length;
     const percentage = Math.round((correctAnswers / totalQuestions) * 100);
     const passed = percentage >= examConfig.passScorePercentage;
@@ -69,7 +69,7 @@ function submitExam(selectedExamQuestions, examConfig, timeRemaining) {
     const incorrectOrUnansweredQuestions = selectedExamQuestions.filter(q => {
         const answer = answeredQuestions.find(a => a.questionId === q.id);
         // Unanswered or answered incorrectly
-        return !answer || answer.selectedAnswer !== (q.correct - 1);
+        return !answer || answer.selectedAnswer !== q.correct;
     }).map(q => {
         const answer = answeredQuestions.find(a => a.questionId === q.id);
         return {
@@ -106,7 +106,7 @@ function submitExam(selectedExamQuestions, examConfig, timeRemaining) {
                         <p style="color: #dc3545; margin-bottom: 5px;">
                             Your answer: ${q.wasAnswered ? q.options[q.selectedAnswer] : '<em>Not answered</em>'}
                         </p>
-                        <p style="color: #28a745; margin-bottom: 5px;">Correct answer: ${q.options[q.correct - 1]}</p>
+                        <p style="color: #28a745; margin-bottom: 5px;">Correct answer: ${q.options[q.correct]}</p>
                         <p style="color: #666; font-style: italic;">${q.explanation}</p>
                     </div>
                 `).join('')}
