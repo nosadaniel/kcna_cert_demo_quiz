@@ -307,6 +307,20 @@
     </style>
 </head>
 <body>
+    <div id="welcomePage" style="position:fixed;top:0;left:0;width:100vw;height:100vh;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);z-index:2000;display:flex;align-items:center;justify-content:center;flex-direction:column;">
+        <div style="background:white;padding:40px 30px 30px 30px;border-radius:20px;box-shadow:0 8px 32px rgba(0,0,0,0.15);max-width:420px;text-align:center;">
+            <h1 style="margin-bottom:10px;color:#4facfe;font-size:2.2em;">Welcome to the KCNA Practice Exam</h1>
+            <p style="margin-bottom:18px;color:#333;font-size:1.1em;">Test your knowledge of Kubernetes and Cloud Native concepts.<br><br>
+            <strong>How it works:</strong></p>
+            <ul style="text-align:left;margin:0 auto 18px auto;max-width:340px;color:#444;font-size:1em;line-height:1.6;">
+                <li>Questions are randomly selected from all domains.</li>
+                <li>Each question is multiple choice.</li>
+                <li>You have <span id="welcomeTotalQuestions"></span> questions and <span id="welcomeExamTime"></span> minutes to complete the exam.</li>
+                <li>After submission, you'll see your score, domain breakdown, and a review of incorrect/unanswered questions.</li>
+            </ul>
+            <button id="startExamBtn" style="margin-top:10px;background:linear-gradient(45deg,#28a745,#20c997);color:white;border:none;padding:15px 40px;font-size:1.2em;font-weight:bold;border-radius:25px;cursor:pointer;transition:all 0.3s ease;box-shadow:0 4px 15px rgba(40,167,69,0.18);">Start Exam</button>
+        </div>
+    </div>
     <div class="progress-bar" id="progressBar"></div>
     <div class="timer" id="timer">60:00</div>
     
@@ -476,10 +490,28 @@
             }
         });
 
-        // Initialize exam when DOM is loaded
+        // Welcome page logic
         document.addEventListener('DOMContentLoaded', function() {
-            updateExamInfo(EXAM_CONFIG);
-            initializeExam();
+            // Preview the actual randomized questions and time
+            const previewQuestions = getRandomizedExamQuestions();
+            const previewTotalQuestions = previewQuestions.length;
+            const previewExamTime = Math.ceil(previewTotalQuestions * 1); // 1 min per question, or 0.5 for 30s
+
+            document.getElementById('welcomeTotalQuestions').textContent = previewTotalQuestions;
+            document.getElementById('welcomeExamTime').textContent = previewExamTime;
+            // Hide exam UI initially
+            document.querySelector('.exam-container').style.display = 'none';
+            document.getElementById('timer').style.display = 'none';
+            document.getElementById('progressBar').style.display = 'none';
+            // Start Exam button
+            document.getElementById('startExamBtn').onclick = function() {
+                document.getElementById('welcomePage').style.display = 'none';
+                document.querySelector('.exam-container').style.display = '';
+                document.getElementById('timer').style.display = '';
+                document.getElementById('progressBar').style.display = '';
+                updateExamInfo(EXAM_CONFIG);
+                initializeExam();
+            };
         });
     </script>
 </body>
