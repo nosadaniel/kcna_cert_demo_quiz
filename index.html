@@ -371,26 +371,14 @@
         </a>
     </div>
 
+    <script src="./exam-config.js"></script>
     <script src="./exam-questions.js"></script>
     <script src="./exam-ui.js"></script>
     <script src="./exam-results.js"></script>
     <script>
-        // Use window.examQuestions from exam-questions.js
+        // Use window.EXAM_CONFIG and window.examQuestions from the config and questions files
         const examQuestions = window.examQuestions;
-
-        // Configuration for exam
-        const EXAM_CONFIG = {
-            totalQuestions: 40,
-            examDurationMinutes: 40, // Duration in minutes
-            passScorePercentage: 80, // Pass score percentage
-            distribution: {
-                'Kubernetes Fundamentals': 46,
-                'Kubernetes Architecture': 19,
-                'Cloud Native Observability': 11,
-                'Cloud Native Application Delivery': 9,
-                'Cloud Native Infrastructure': 15
-            }
-        };
+        const EXAM_CONFIG = window.EXAM_CONFIG;
 
         let timeRemaining = EXAM_CONFIG.examDurationMinutes * 60; // Convert minutes to seconds
         let timerInterval;
