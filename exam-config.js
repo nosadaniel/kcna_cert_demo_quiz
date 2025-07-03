@@ -1,6 +1,6 @@
 window.EXAM_CONFIG = {
-    totalQuestions: 40,                // Initial total number of questions per exam (overridden at runtime)
-    examDurationMinutes: 40,           // Initial exam duration in minutes (overridden at runtime)
+    totalQuestions: 60,                // Initial total number of questions per exam (overridden at runtime)
+    examDurationMinutes: 60,           // Initial exam duration in minutes (overridden at runtime)
     passScorePercentage: 80,           // Pass score percentage (e.g., 80 for 80%)
     distribution: {
         'Kubernetes Fundamentals': 46,
