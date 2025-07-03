@@ -3788,7 +3788,7 @@ window.examQuestions = [
     ],
     "correct": 1,
     "correctLetter": "B",
-    "explanation": "With FaaS, the provider manages the entire underlying infrastructure stack \u2013 physical servers, VMs, operating systems, patching, container runtimes (if used underneath), and language runtimes. The user focuses only on the function code."
+    "explanation": "With FaaS, the provider manages the entire underlying infrastructure stack � physical servers, VMs, operating systems, patching, container runtimes (if used underneath), and language runtimes. The user focuses only on the function code."
   },
   {
     "id": 241,
@@ -4076,7 +4076,7 @@ window.examQuestions = [
     ],
     "correct": 1,
     "correctLetter": "B",
-    "explanation": "Instrumentation is the process of adding code (using libraries like OpenTelemetry SDKs or Prometheus client libraries) to an application so that it emits signals about its state and behavior \u2013 creating log entries, incrementing metric counters, starting/ending trace spans."
+    "explanation": "Instrumentation is the process of adding code (using libraries like OpenTelemetry SDKs or Prometheus client libraries) to an application so that it emits signals about its state and behavior � creating log entries, incrementing metric counters, starting/ending trace spans."
   },
   {
     "id": 259,
@@ -4732,7 +4732,7 @@ window.examQuestions = [
     ],
     "correct": 1,
     "correctLetter": "B",
-    "explanation": "containerd is a core container runtime that manages the complete container lifecycle on a single host \u2013 image transfer, storage, container execution, supervision, and network attachments."
+    "explanation": "containerd is a core container runtime that manages the complete container lifecycle on a single host � image transfer, storage, container execution, supervision, and network attachments."
   },
   {
     "id": 300,
@@ -4859,7 +4859,7 @@ window.examQuestions = [
     ],
     "correct": 2,
     "correctLetter": "C",
-    "explanation": "Effective application delivery requires feedback loops at various stages \u2013 CI tests provide feedback on code quality, deployment tools report success/failure, and observability tools provide feedback on application health post-deployment. This allows teams to detect and respond to problems quickly."
+    "explanation": "Effective application delivery requires feedback loops at various stages � CI tests provide feedback on code quality, deployment tools report success/failure, and observability tools provide feedback on application health post-deployment. This allows teams to detect and respond to problems quickly."
   },
   {
     "id": 308,
@@ -4939,7 +4939,7 @@ window.examQuestions = [
     ],
     "correct": 1,
     "correctLetter": "B",
-    "explanation": "Once the image is built (docker build), the next logical step is to store this immutable artifact in a central, accessible location \u2013 the container registry. Subsequent steps like testing or deployment will pull the image from this registry."
+    "explanation": "Once the image is built (docker build), the next logical step is to store this immutable artifact in a central, accessible location � the container registry. Subsequent steps like testing or deployment will pull the image from this registry."
   },
   {
     "id": 313,
@@ -5003,7 +5003,7 @@ window.examQuestions = [
     ],
     "correct": 1,
     "correctLetter": "B",
-    "explanation": "Kubernetes YAML manifests are declarative \u2013 they describe the desired end state. This aligns perfectly with cloud-native principles and tools like GitOps, where these manifests define the target for reconciliation loops. Imperative scripts or manual steps are less reliable and harder to automate consistently."
+    "explanation": "Kubernetes YAML manifests are declarative � they describe the desired end state. This aligns perfectly with cloud-native principles and tools like GitOps, where these manifests define the target for reconciliation loops. Imperative scripts or manual steps are less reliable and harder to automate consistently."
   },
   {
     "id": 317,
@@ -5387,7 +5387,7 @@ window.examQuestions = [
     ],
     "correct": 2,
     "correctLetter": "C",
-    "explanation": "The default strategy for Kubernetes Deployments is RollingUpdate. It ensures that updates happen gradually \u2013 stopping old Pods and starting new ones incrementally \u2013 while ensuring a minimum number of Pods remain available throughout the process, thus enabling zero-downtime updates."
+    "explanation": "The default strategy for Kubernetes Deployments is RollingUpdate. It ensures that updates happen gradually � stopping old Pods and starting new ones incrementally � while ensuring a minimum number of Pods remain available throughout the process, thus enabling zero-downtime updates."
   },
   {
     "id": 341,
